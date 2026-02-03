@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Forever Valentine 💙</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ff6b9d;
+            --secondary: #ff8fab;
+            --accent: #ffd1dc;
+            --dark: #2c3e50;
+            --light: #fff;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Roses Background */
+        .floating-roses {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .rose-particle {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0;
+            animation: floatRose 12s infinite;
+        }
+
+        @keyframes floatRose {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px) rotate(720deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Pages */
+        .page {
+            min-height: 100vh;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .page.active {
+            display: flex;
+            animation: pageSlideIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes pageSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* PAGE 1 - HEARTFELT GREETING */
+        .page1-container {
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .sulley-section {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sulley-container {
+            width: 280px;
+            height: 320px;
+            margin: 0 auto 20px;
+            position: relative;
+            transform: scale(1);
+            animation: sulleyEntrance 2s ease-out;
+        }
+
+        @keyframes sulleyEntrance {
+            0% {
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.1) rotate(10deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        /* Improved Sulley Design */
+        .sulley {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            animation: sulleyBreathe 3s ease-in-out infinite;
+        }
+
+        @keyframes sulleyBreathe {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.02); }
+        }
+
+        .sulley-body {
+            position: absolute;
+            width: 200px;
+            height: 220px;
+            background: linear-gradient(145deg, #6ec9e8 0%, #4db8e8 40%, #2a7fb8 100%);
+            border-radius: 45% 45% 48% 48%;
+            top: 85px;
+            left: 40px;
+            box-shadow: 
+                0 20px 40px rgba(42, 127, 184, 0.5),
+                inset -10px -10px 30px rgba(0, 0, 0, 0.1),
+                inset 10px 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Purple spots with texture */
+        .spot {
+            position: absolute;
+            background: linear-gradient(145deg, #c996eb 0%, #b388eb 50%, #8e44ad 100%);
+            border-radius: 50%;
+            box-shadow: inset -3px -3px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .spot1 { width: 45px; height: 50px; top: 30px; left: 25px; }
+        .spot2 { width: 38px; height: 42px; top: 50px; right: 30px; }
+        .spot3 { width: 42px; height: 48px; bottom: 50px; left: 35px; }
+        .spot4 { width: 35px; height: 40px; bottom: 40px; right: 35px; }
+
+        /* Sulley Head */
+        .sulley-head {
+            position: absolute;
+            width: 180px;
+            height: 140px;
+            background: linear-gradient(145deg, #7ed4f0 0%, #5ac0ed 50%, #3d9ec9 100%);
+            border-radius: 50% 50% 45% 45%;
+            top: 0;
+            left: 50px;
+            box-shadow: 
+                0 15px 35px rgba(61, 158, 201, 0.4),
+                inset -8px -8px 20px rgba(0, 0, 0, 0.1),
+                inset 8px 8px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .head-spot1 { width: 28px; height: 32px; top: 30px; left: 20px; }
+        .head-spot2 { width: 25px; height: 28px; top: 35px; right: 25px; }
+        .head-spot3 { width: 22px; height: 26px; top: 70px; left: 35px; }
+
+        /* Horns */
+        .sulley-horns {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 80px;
+        }
+
+        .horn {
+            width: 22px;
+            height: 40px;
+            background: linear-gradient(180deg, #d4a5e8 0%, #b388eb 50%, #8e44ad 100%);
+            border-radius: 50% 50% 0 0;
+            box-shadow: 
+                0 5px 15px rgba(142, 68, 173, 0.5),
+                inset -3px -3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Eyes */
+        .sulley-eyes {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 35px;
+        }
+
+        .sulley-eye {
+            width: 42px;
+            height: 48px;
+            background: #ffffff;
+            border-radius: 50%;
+            border: 4px solid #2d3436;
+            position: relative;
+            box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .eyebrow {
+            position: absolute;
+            width: 50px;
+            height: 8px;
+            background: #2a7fb8;
+            border-radius: 50%;
+            top: -15px;
+            left: -4px;
+            transform: rotate(-10deg);
+        }
+
+        .eye-right .eyebrow {
+            transform: rotate(10deg);
+        }
+
+        .pupil {
+            position: absolute;
+            width: 22px;
+            height: 26px;
+            background: radial-gradient(circle at 35% 35%, #4a4a4a, #000000);
+            border-radius: 50%;
+            top: 12px;
+            left: 10px;
+            animation: eyeMove 5s ease-in-out infinite;
+        }
+
+        @keyframes eyeMove {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(3px, -2px); }
+            50% { transform: translate(-3px, 2px); }
+            75% { transform: translate(2px, -1px); }
+        }
+
+        .pupil-shine {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            top: 4px;
+            left: 5px;
+        }
+
+        /* Nose and Mouth */
+        .sulley-nose {
+            position: absolute;
+            width: 32px;
+            height: 22px;
+            background: linear-gradient(145deg, #3a3a3a 0%, #1a1a1a 100%);
+            border-radius: 50%;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .nose-highlight {
+            position: absolute;
+            width: 10px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            top: 4px;
+            left: 8px;
+        }
+
+        .sulley-mouth {
+            position: absolute;
+            width: 70px;
+            height: 35px;
+            border: 5px solid #2d3436;
+            border-top: none;
+            border-radius: 0 0 60px 60px;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.3);
+            animation: smile 4s ease-in-out infinite;
+        }
+
+        @keyframes smile {
+            0%, 100% { width: 70px; }
+            50% { width: 80px; }
+        }
+
+        /* Arms */
+        .sulley-arm {
+            position: absolute;
+            width: 60px;
+            height: 100px;
+            background: linear-gradient(145deg, #6ec9e8 0%, #4db8e8 50%, #2a7fb8 100%);
+            border-radius: 30px;
+            box-shadow: 
+                0 10px 25px rgba(42, 127, 184, 0.4),
+                inset -5px -5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .arm-left {
+            top: 110px;
+            left: 5px;
+            transform: rotate(-30deg);
+        }
+
+        .arm-right {
+            top: 110px;
+            right: 5px;
+            transform: rotate(30deg);
+        }
+
+        .arm-spot {
+            width: 22px;
+            height: 25px;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Paws */
+        .paw {
+            position: absolute;
+            width: 50px;
+            height: 42px;
+            background: linear-gradient(145deg, #7ed4f0 0%, #5ac0ed 100%);
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 8px 20px rgba(61, 158, 201, 0.4);
+        }
+
+        .claw {
+            position: absolute;
+            width: 10px;
+            height: 12px;
+            background: #2d3436;
+            border-radius: 0 0 5px 5px;
+            bottom: 0;
+        }
+
+        .claw1 { left: 6px; }
+        .claw2 { left: 20px; }
+        .claw3 { left: 34px; }
+
+        /* Legs */
+        .sulley-legs {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 40px;
+        }
+
+        .leg {
+            width: 55px;
+            height: 70px;
+            background: linear-gradient(145deg, #6ec9e8 0%, #4db8e8 50%, #2a7fb8 100%);
+            border-radius: 25px 25px 0 0;
+            box-shadow: inset -5px -5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .leg-spot {
+            width: 25px;
+            height: 28px;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .foot {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            background: linear-gradient(145deg, #7ed4f0 0%, #5ac0ed 100%);
+            border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 8px 20px rgba(61, 158, 201, 0.4);
+        }
+
+        .foot-claw {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #2d3436;
+            border-radius: 0 0 5px 5px;
+            bottom: 0;
+        }
+
+        .foot-claw1 { left: 10px; }
+        .foot-claw2 { left: 25px; }
+        .foot-claw3 { left: 40px; }
+
+        /* Rose in hand - improved */
+        .rose-holder {
+            position: absolute;
+            top: 150px;
+            right: -40px;
+            z-index: 10;
+            animation: roseGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes roseGlow {
+            0%, 100% { 
+                transform: translateY(0) rotate(-15deg);
+                filter: drop-shadow(0 0 10px rgba(255, 107, 157, 0.5));
+            }
+            50% { 
+                transform: translateY(-8px) rotate(-10deg);
+                filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.8));
+            }
+        }
+
+        .rose-stem {
+            width: 5px;
+            height: 95px;
+            background: linear-gradient(180deg, #27ae60 0%, #229954 50%, #1e8449 100%);
+            border-radius: 3px;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: inset -2px 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .rose-leaf {
+            position: absolute;
+            width: 20px;
+            height: 14px;
+            background: linear-gradient(90deg, #27ae60 0%, #1e8449 100%);
+            border-radius: 0 70% 70% 0;
+            left: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .leaf1 { top: 25px; transform: rotate(-35deg); }
+        .leaf2 { top: 50px; transform: rotate(35deg) scaleX(-1); left: -15px; }
+
+        .rose-flower {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            filter: drop-shadow(0 5px 15px rgba(231, 76, 60, 0.5));
+        }
+
+        .rose-petal {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(145deg, #ff6b9d 0%, #e74c3c 60%, #c0392b 100%);
+            border-radius: 60% 0 60% 60%;
+            box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .petal1 { top: 2px; left: 13px; transform: rotate(0deg); }
+        .petal2 { top: 7px; left: 23px; transform: rotate(50deg); }
+        .petal3 { top: 17px; left: 23px; transform: rotate(100deg); }
+        .petal4 { top: 24px; left: 13px; transform: rotate(150deg); }
+        .petal5 { top: 17px; left: 3px; transform: rotate(200deg); }
+        .petal6 { top: 7px; left: 3px; transform: rotate(250deg); }
+
+        .rose-center {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: radial-gradient(circle, #f9ca24 0%, #f39c12 100%);
+            border-radius: 50%;
+            top: 17px;
+            left: 17px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sulley speech bubble */
+        .sulley-speech {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 20px;
+            max-width: 280px;
+            margin: 20px auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: bubble 3s ease-in-out infinite;
+        }
+
+        @keyframes bubble {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .sulley-speech:before {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 15px solid white;
+        }
+
+        .sulley-speech p {
+            font-size: 14px;
+            color: var(--dark);
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        /* Love Letter Section */
+        .love-letter {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 50px 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .love-letter:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .love-letter-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .love-letter h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(255, 107, 157, 0.3)); }
+            50% { filter: drop-shadow(0 0 15px rgba(255, 107, 157, 0.6)); }
+        }
+
+        .letter-text {
+            font-size: 1.25rem;
+            line-height: 2;
+            color: var(--dark);
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .letter-text p {
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-align: right;
+            margin-top: 30px;
+        }
+
+        .btn-continue {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-continue:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-continue:hover:before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-continue:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(255, 107, 157, 0.6);
+        }
+
+        /* PAGE 2 - VALENTINE QUESTION */
+        .page2-container {
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .question-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 60px 50px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            border: 3px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .heart-animation {
+            font-size: 100px;
+            margin-bottom: 30px;
+            animation: heartPulse 1.5s ease-in-out infinite;
+            filter: drop-shadow(0 10px 30px rgba(255, 107, 157, 0.6));
+        }
+
+        @keyframes heartPulse {
+            0%, 100% { transform: scale(1); }
+            15%, 35% { transform: scale(1.15); }
+            25%, 45% { transform: scale(1); }
+        }
+
+        .question-card h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .question-text {
+            font-size: 2rem;
+            color: var(--dark);
+            font-weight: 600;
+            margin-bottom: 50px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            color: white;
+            border: none;
+            padding: 20px 60px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.5);
+            font-family: 'Montserrat', sans-serif;
+            animation: yesGrow 2s ease-in-out infinite;
+        }
+
+        @keyframes yesGrow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.15);
+            box-shadow: 0 20px 50px rgba(255, 107, 157, 0.7);
+        }
+
+        .btn-no {
+            background: #95a5a6;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+        }
+
+        .btn-no:hover {
+            background: #7f8c8d;
+        }
+
+        /* PAGE 3 - FOREVER VALENTINE */
+        .page3-container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .forever-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 60px 50px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .celebration-burst {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .burst-item {
+            position: absolute;
+            font-size: 40px;
+            animation: burstOut 2s ease-out forwards;
+        }
+
+        @keyframes burstOut {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) rotate(720deg) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .forever-card h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 50%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+            animation: rainbowShift 3s ease-in-out infinite;
+        }
+
+        @keyframes rainbowShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(20deg); }
+        }
+
+        .forever-message {
+            font-size: 1.5rem;
+            line-height: 2;
+            color: var(--dark);
+            margin-bottom: 30px;
+        }
+
+        .forever-message p {
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .love-letter h1 { font-size: 2.5rem; }
+            .letter-text { font-size: 1.1rem; }
+            .question-card h2 { font-size: 2.5rem; }
+            .question-text { font-size: 1.5rem; }
+            .forever-card h2 { font-size: 3rem; }
+            .sulley-container { transform: scale(0.8); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Roses -->
+    <div class="floating-roses" id="floatingRoses"></div>
+
+    <!-- PAGE 1: Heartfelt Greeting -->
+    <div class="page active" id="page1">
+        <div class="page1-container">
+            <div class="sulley-section">
+                <div class="sulley-container">
+                    <div class="sulley">
+                        <div class="sulley-horns">
+                            <div class="horn"></div>
+                            <div class="horn"></div>
+                        </div>
+                        
+                        <div class="sulley-head">
+                            <div class="spot head-spot1"></div>
+                            <div class="spot head-spot2"></div>
+                            <div class="spot head-spot3"></div>
+                            
+                            <div class="sulley-eyes">
+                                <div class="sulley-eye eye-left">
+                                    <div class="eyebrow"></div>
+                                    <div class="pupil">
+                                        <div class="pupil-shine"></div>
+                                    </div>
+                                </div>
+                                <div class="sulley-eye eye-right">
+                                    <div class="eyebrow"></div>
+                                    <div class="pupil">
+                                        <div class="pupil-shine"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="sulley-nose">
+                                <div class="nose-highlight"></div>
+                            </div>
+                            <div class="sulley-mouth"></div>
+                        </div>
+                        
+                        <div class="sulley-body">
+                            <div class="spot spot1"></div>
+                            <div class="spot spot2"></div>
+                            <div class="spot spot3"></div>
+                            <div class="spot spot4"></div>
+                        </div>
+                        
+                        <div class="sulley-arm arm-left">
+                            <div class="spot arm-spot"></div>
+                            <div class="paw">
+                                <div class="claw claw1"></div>
+                                <div class="claw claw2"></div>
+                                <div class="claw claw3"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="sulley-arm arm-right">
+                            <div class="spot arm-spot"></div>
+                            <div class="paw">
+                                <div class="claw claw1"></div>
+                                <div class="claw claw2"></div>
+                                <div class="claw claw3"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="sulley-legs">
+                            <div class="leg">
+                                <div class="spot leg-spot"></div>
+                                <div class="foot">
+                                    <div class="foot-claw foot-claw1"></div>
+                                    <div class="foot-claw foot-claw2"></div>
+                                    <div class="foot-claw foot-claw3"></div>
+                                </div>
+                            </div>
+                            <div class="leg">
+                                <div class="spot leg-spot"></div>
+                                <div class="foot">
+                                    <div class="foot-claw foot-claw1"></div>
+                                    <div class="foot-claw foot-claw2"></div>
+                                    <div class="foot-claw foot-claw3"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="rose-holder">
+                            <div class="rose-stem">
+                                <div class="rose-leaf leaf1"></div>
+                                <div class="rose-leaf leaf2"></div>
+                                <div class="rose-flower">
+                                    <div class="rose-petal petal1"></div>
+                                    <div class="rose-petal petal2"></div>
+                                    <div class="rose-petal petal3"></div>
+                                    <div class="rose-petal petal4"></div>
+                                    <div class="rose-petal petal5"></div>
+                                    <div class="rose-petal petal6"></div>
+                                    <div class="rose-center"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sulley-speech">
+                    <p>"Hey there! I'm not usually the delivery guy, but this message was too special to leave to anyone else. Someone really loves you!" 💙</p>
+                </div>
+            </div>
+
+            <div class="love-letter">
+                <div class="love-letter-content">
+                    <h1>My Dearest Kani,</h1>
+                    <div class="letter-text">
+                        <p>Even though miles separate us, you are always right here in my heart. Every single day, you lift me up with your unwavering support and encouragement.</p>
+                        
+                        <p>I want you to know that everything you do for me, every word of encouragement, every moment you believe in me when I struggle to believe in myself—none of it goes unnoticed. None of it will ever be taken for granted.</p>
+                        
+                        <p>You are my strength, my inspiration, and the light that guides me through every challenge. Distance may test us, but it will never diminish what we have.</p>
+                        
+                        <p>You are loved beyond measure, cherished beyond words, and appreciated more than you'll ever know.</p>
+                    </div>
+                    <div class="signature">Forever Yours, Thando 💕</div>
+                    <br><br>
+                    <button class="btn-continue" onclick="goToPage(2)">Continue ➜</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: Valentine Question -->
+    <div class="page" id="page2">
+        <div class="page2-container">
+            <div class="question-card">
+                <div class="heart-animation">💖</div>
+                <h2>My Beautiful Kani,</h2>
+                <p class="question-text">Will you be my Valentine?</p>
+                <div class="button-container">
+                    <button class="btn-yes" onclick="celebrate()">YES! 💕</button>
+                    <button class="btn-no" id="noBtn">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 3: Forever Valentine -->
+    <div class="page" id="page3">
+        <div class="page3-container">
+            <div class="forever-card">
+                <h2>You're My Forever Valentine! 🌹</h2>
+                <div class="forever-message">
+                    <p>You said YES! And you've just made me the happiest person in the world! 💖</p>
+                    
+                    <p>No matter the distance, no matter the challenges, you are my forever. Today, tomorrow, and always.</p>
+                    
+                    <p>Thank you for being you. Thank you for choosing us. Thank you for being my Valentine.</p>
+                    
+                    <p><strong>I love you more than words can express. ❤️</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating roses
+        function createFloatingRoses() {
+            const container = document.getElementById('floatingRoses');
+            const roses = ['🌹', '🌹', '💐', '🥀', '🌺'];
+            
+            setInterval(() => {
+                const rose = document.createElement('div');
+                rose.className = 'rose-particle';
+                rose.textContent = roses[Math.floor(Math.random() * roses.length)];
+                rose.style.left = Math.random() * 100 + '%';
+                rose.style.animationDelay = Math.random() * 2 + 's';
+                rose.style.animationDuration = (8 + Math.random() * 6) + 's';
+                container.appendChild(rose);
+
+                setTimeout(() => rose.remove(), 14000);
+            }, 800);
+        }
+
+        // Navigate pages
+        function goToPage(pageNum) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page' + pageNum).classList.add('active');
+        }
+
+        // No button runs away
+        const noBtn = document.getElementById('noBtn');
+        let noBtnClicks = 0;
+        
+        noBtn.addEventListener('mouseenter', () => {
+            const x = Math.random() * (window.innerWidth - 200);
+            const y = Math.random() * (window.innerHeight - 100);
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+            
+            noBtnClicks++;
+            if (noBtnClicks === 1) {
+                noBtn.textContent = "Wait...";
+            } else if (noBtnClicks === 2) {
+                noBtn.textContent = "Are you sure?";
+            } else if (noBtnClicks === 3) {
+                noBtn.textContent = "Really? 🥺";
+            } else {
+                noBtn.textContent = "Come on! 💔";
+            }
+        });
+
+        // Yes button grows
+        const yesBtn = document.querySelector('.btn-yes');
+        let yesBtnSize = 1;
+        
+        setInterval(() => {
+            yesBtnSize += 0.01;
+            yesBtn.style.transform = `scale(${Math.min(yesBtnSize, 1.3)})`;
+        }, 200);
+
+        // Celebration
+        function celebrate() {
+            goToPage(3);
+            
+            const burst = document.createElement('div');
+            burst.className = 'celebration-burst';
+            document.body.appendChild(burst);
+
+            const items = ['🌹', '💕', '💖', '💗', '🎈', '✨', '⭐', '💝', '🎉', '🎊'];
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const item = document.createElement('div');
+                    item.className = 'burst-item';
+                    item.textContent = items[Math.floor(Math.random() * items.length)];
+                    
+                    const angle = (Math.PI * 2 * i) / 50;
+                    const distance = 300 + Math.random() * 400;
+                    const tx = Math.cos(angle) * distance;
+                    const ty = Math.sin(angle) * distance;
+                    
+                    item.style.left = centerX + 'px';
+                    item.style.top = centerY + 'px';
+                    item.style.setProperty('--tx', tx + 'px');
+                    item.style.setProperty('--ty', ty + 'px');
+                    
+                    burst.appendChild(item);
+                    
+                    setTimeout(() => item.remove(), 2000);
+                }, i * 30);
+            }
+
+            setTimeout(() => burst.remove(), 3000);
+        }
+
+        // Initialize
+        createFloatingRoses();
+    </script>
+</body>
+</html>
